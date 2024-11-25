@@ -3,19 +3,19 @@ template:
 
 entries:
 
-  - fr_role_name: AD_GRP_FR_OPERATION
-    access_on:
-      - d_name: DB_AVTR_PROVISION
-        drop: false
-        schemas:
-          - name: PROVISION
-            drop: false
-            all_priv: false
-            all_privs_deprovision: false
-            tables:
-              - table_name: STATEMENTS
-                grants_apply: select
-                drop: false
+  # - fr_role_name: AD_GRP_FR_OPERATION
+  #   access_on:
+  #     - d_name: DB_AVTR_PROVISION
+  #       drop: false
+  #       schemas:
+  #         - name: PROVISION
+  #           drop: false
+  #           all_priv: false
+  #           all_privs_deprovision: false
+  #           tables:
+  #             - table_name: STATEMENTS
+  #               grants_apply: select
+  #               drop: false
 
 
 
