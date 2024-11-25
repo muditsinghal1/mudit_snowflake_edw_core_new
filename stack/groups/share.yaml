@@ -9,15 +9,15 @@ entries:
    accounts:
    - name: "OF52068"   #PROVIDE ACCOUNT LOCATOR
      deprovision: false
-#    access_on:
-#     - name: AVTR_DB_P_DEV_EDW_CORE
-#       schemas:
-#         - name: PUBLISHED
-#           tables:
-#             - table_name: MATERIAL_DESCRIPTION
-#               grants_apply: select
-#               drop: false
-#           # views:
-#           #   - view_name: STATEMENTS
-#           #     grants_apply: select
-#           #     drop: false                
+   access_on:
+    - name: AVTR_DB_OP_MGMT
+      schemas:
+        - name: RAW
+          # tables:
+          #   - table_name: MATERIAL_DESCRIPTION
+          #     grants_apply: select
+          #     drop: false
+          # views:
+          #   - view_name: STATEMENTS
+          #     grants_apply: select
+          #     drop: false                

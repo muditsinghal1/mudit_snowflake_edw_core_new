@@ -2,7 +2,7 @@ template:
   path: notification-integration-membership.yaml
 
 entries:
-  - name: OP_MGMT_TASK_NOTIFICATION
-    role_Name: AD_GRP_FR_PRJ_RL_AVTR_OP_MGMT_ENGINEER   
+  # - name: OP_MGMT_TASK_NOTIFICATION
+  #   role_Name: AD_GRP_FR_PRJ_RL_AVTR_OP_MGMT_ENGINEER   
     
     

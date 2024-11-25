@@ -3,13 +3,13 @@ template:
 
 entries:
 
-  - fo_role_name: DEV_EDW_CORE_SHARE                     
-    deprovision: false                         
-    create_role: true
-    env: DEV
-    shares:
-    sh_db_name: AVTR_DEV_EDW_CORE_SHARE
-    deprovision_shared_db_access: false
+  # - fo_role_name: DEV_EDW_CORE_SHARE                     
+  #   deprovision: false                         
+  #   create_role: true
+  #   env: DEV
+  #   shares:
+  #   sh_db_name: AVTR_DEV_EDW_CORE_SHARE
+  #   deprovision_shared_db_access: false
 
 
 
