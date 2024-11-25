@@ -1,0 +1,17 @@
+{% if create_role is truthy %}
+roles:
+  - name: {{name}}
+    destroy: {{deprovision}}
+{% endif %}
+
+
+privilegeGrants:
+  - privilege: "EXECUTE TASK"
+    objectType: "ACCOUNT"
+    roleName: {{name}}
+    owner: "ACCOUNTADMIN"
+
+  - privilege: "EXECUTE MANAGED TASK"
+    objectType: "ACCOUNT"
+    roleName: {{name}}
+    owner: "ACCOUNTADMIN"

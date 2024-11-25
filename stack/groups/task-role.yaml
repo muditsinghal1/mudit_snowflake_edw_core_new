@@ -1,0 +1,7 @@
+template:
+ path: task-role.yaml
+
+entries:
+  - name: RL_AVTR_TASK_OPERATOR
+    create_role: true
+    deprovision: false    

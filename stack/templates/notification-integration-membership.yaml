@@ -1,0 +1,5 @@
+privilegeGrants:
+  - objectType: integration
+    objectName: {{name}}
+    roleName: {{role_Name}}  
+    privilege: usage

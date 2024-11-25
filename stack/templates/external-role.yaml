@@ -1,0 +1,14 @@
+{% if create_role is truthy %}
+roles:
+  - name: "EXT_RL_AVTR_{{env}}_{{fo_role_name}}"
+    destroy: {{deprovision}}  
+{% endif %}
+
+{% if sh_db_name is truthy %}
+privilegeGrants:
+  - privilege: "IMPORTED PRIVILEGES"
+    objectType: "DATABASE"
+    objectName: {{sh_db_name}}
+    roleName: "EXT_RL_AVTR_{{env}}_{{fo_role_name}}"
+    destroy: {{deprovision_shared_db_access}}
+{% endif %}  

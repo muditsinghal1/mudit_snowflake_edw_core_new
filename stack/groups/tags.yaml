@@ -1,0 +1,16 @@
+template:
+  path: tags.yaml
+
+entries:
+  - name: granular_role_tag
+    database: avtr_db_op_mgmt
+    schema: raw
+    deprovision: false    
+    allowedValues:
+      - true
+      - false
+    # maskingPolicies:
+    # - db1.schema1.mp1  Example
+    # - db1.schema1.mp1 Example
+    properties:
+      comment: This Tag is can be assigned to any FR Roles who has object level access.

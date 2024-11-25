@@ -1,0 +1,32 @@
+{% if create_role is truthy %}
+roles:
+  - name: "{{fr_role_name}}"
+    destroy: {{deprovision}}  
+{% if tags is truthy %}
+    tags:
+{% for tag in tags %}
+      {{ tag.tag_name }}: {{ tag.tag_value }}
+{% endfor %}
+{% endif %}
+{% endif %}
+
+roleGrants:
+  {% if roles is truthy %}
+  {% for rl in roles %}
+  - name: "{{rl.name}}"
+    toRoles:
+      - "{{fr_role_name}}"
+    destroy: "{{rl.deprovision}}"
+  {% endfor %}
+  {% endif %}
+
+
+# privilegeGrants:
+# {% if create_role is truthy %}
+#   - privilege: "OWNERSHIP"
+#     objectType: "ROLE"
+#     objectName: {{fr_role_name}}
+#     roleName: "RL_USER_MGMT"
+#     currentGrants: COPY
+# {% endif %}
+

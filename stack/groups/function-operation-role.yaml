@@ -1,0 +1,50 @@
+template:
+  path: function-project-role.yaml
+
+entries:
+
+  - fr_role_name: AD_GRP_FR_OPERATION
+    create_role: true    # GET THE ROLE CREATED BY SCIM FIRST
+    tags:
+     - tag_name: avtr_db_op_mgmt.raw.granular_role_tag
+       tag_value: 'TRUE'     # IF WANT TO UNSET use 'null' for tag_value. Place TAG Value in single Quotes    
+    deprovision: false
+    roles:
+      - name: SECURITYADMIN  #GRANTED THIS ACCESS FOR GRANTS MANAGEMENT
+        deprovision: false
+      - name: AD_GRP_FR_PRJ_RL_AVTR_OP_MGMT_ENGINEER
+        deprovision: false
+      # - name: AD_GRP_FR_PRJ_RL_AVTR_EDW_DEV_ENGINEER
+      #   deprovision: false
+      # - name: AD_GRP_FR_PRJ_RL_AVTR_EDW_QA_ENGINEER
+      #   deprovision: false
+      # - name: AD_GRP_FR_PRJ_RL_AVTR_EDW_PROD_READER
+      #   deprovision: false        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

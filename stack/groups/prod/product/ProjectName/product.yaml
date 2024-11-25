@@ -1,0 +1,40 @@
+template:
+  path: product.yaml
+entries:
+
+#EXAMPLE
+    # - product: PROD_EDW_CORE
+    #   destroy: false
+    #   schemas:
+    #    - name: TRANSFORM
+    #      deprovision: false
+    #    - name: MODEL
+    #      deprovision: false      
+    # - product: PROD_EDW_CORE
+    #   destroy: false
+    #   schemas:
+    #    - name: MODEL
+    #      deprovision: false
+    #    - name: MODEL
+    #      deprovision: false    
+    # - product: PROD_EDW_CORE
+    #   destroy: false
+    #   schemas:
+    #    - name: HARMONIZED
+    #      deprovision: false
+    #    - name: MODEL
+    #      deprovision: false    
+    # - product: PROD_EDW_CORE
+    #   destroy: false
+    #   schemas:
+    #    - name: OPTIMIZED
+    #      deprovision: false
+    #    - name: MODEL
+    #      deprovision: false            
+    #   specific_schemas:
+    #   - name: PUBLISHED
+    #     type: READ_ONLY
+    #     roleNameAbr: PUB
+    #     deprovision: false
+
+

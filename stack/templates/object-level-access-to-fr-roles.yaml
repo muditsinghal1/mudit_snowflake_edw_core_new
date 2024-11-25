@@ -1,0 +1,108 @@
+privilegeGrants:
+  {% for r in access_on %}
+  - privilege: "USAGE"
+    objectType: "DATABASE"
+    objectName: "{{r.d_name}}"
+    roleName: "{{fr_role_name}}"
+    grantOption: false
+    destroy: "{{r.drop}}"    
+  {% for s in r.schemas %}
+  - privilege: "USAGE"
+    objectType: "SCHEMA"
+    objectName: "{{ r.d_name }}.{{s.name}}"
+    roleName: "{{fr_role_name}}"
+    grantOption: false
+    destroy: "{{s.drop}}"     
+  {% if s.views is truthy %}
+  {% for v in s.views %}
+  - privilege: "{{v.grants_apply}}"
+    objectType: "VIEW"
+    objectName: "{{ r.d_name }}.{{s.name}}.{{v.view_name}}"
+    roleName: "{{fr_role_name}}"
+    grantOption: false
+    destroy: "{{v.drop}}"
+  {% endfor %}
+  {% endif %}
+  {% if s.tables is truthy %}
+  {% for t in s.tables %}
+  - privilege: "{{t.grants_apply}}"
+    objectType: "TABLE"
+    objectName: "{{ r.d_name }}.{{s.name}}.{{t.table_name}}"
+    roleName: "{{fr_role_name}}"
+    grantOption: false
+    destroy: "{{t.drop}}"
+  {% endfor %}
+  {% endif %}
+
+  {% if all_priv is truthy %}
+  - privilege: "ALL PRIVILEGES"
+    objectType: "ALL TABLES IN SCHEMA"
+    objectName: "{{ r.d_name }}.{{s.name}}"
+    roleName: "{{fr_role_name}}"
+    grantOption: false
+    destroy: "{{s.all_privs_deprovision}}" 
+  - privilege: "USAGE"
+    objectType: "ALL FUNCTIONS IN SCHEMA"
+    objectName: "{{ r.d_name }}.{{s.name}}"
+    roleName: "{{fr_role_name}}"
+    grantOption: false
+    destroy: "{{s.all_privs_deprovision}}"     
+  - privilege: "USAGE"
+    objectType: "ALL PROCEDURES IN SCHEMA"
+    objectName: "{{ r.d_name }}.{{s.name}}"
+    roleName: "{{fr_role_name}}"
+    grantOption: false
+    destroy: "{{s.all_privs_deprovision}}"     
+  - privilege: "ALL PRIVILEGES"
+    objectType: "TABLES"
+    objectName: "SCHEMA {{ r.d_name }}.{{s.name}}"
+    roleName: "{{fr_role_name}}"
+    future: true   
+    grantOption: false
+    destroy: "{{s.all_privs_deprovision}}"     
+  - privilege: "USAGE"
+    objectType: "FUNCTIONS"
+    objectName: "SCHEMA {{ r.d_name }}.{{s.name}}"
+    roleName: "{{fr_role_name}}"
+    future: true   
+    grantOption: false
+  - privilege: "USAGE"
+    objectType: "PROCEDURES"
+    objectName: "SCHEMA {{ r.d_name }}.{{s.name}}"
+    roleName: "{{fr_role_name}}"
+    future: true   
+    grantOption: false
+    destroy: "{{s.all_privs_deprovision}}"     
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

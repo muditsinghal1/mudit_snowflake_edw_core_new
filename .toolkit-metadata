@@ -1,0 +1,7 @@
+resources:
+- resource: toolkit.conf
+  path: toolkit.conf
+  version: 0.56.0
+  timestamp: 2024-11-18T16:53:07.017442200Z
+  size: 1118
+  hash: 2f199a00d1f0475016b6df69c6ba17d4

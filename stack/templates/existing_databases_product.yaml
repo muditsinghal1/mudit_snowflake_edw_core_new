@@ -1,0 +1,142 @@
+#CREATE DB FOR TEST ONLY
+databases:
+ - name: "{{product}}"
+   destroy: {{deprovision}}
+
+schemas:
+{% for sc in schemas %}
+ - name: {{sc.name}}
+   database: "{{product}}"
+   destroy: {{sc.deprovision}}
+{% endfor %}
+
+
+roles:
+  # Data role    
+  #ALREADY EXISTS as below
+  #RL_AVTR_EDW_DEV_DB_RO
+  #RL_AVTR_EDW_DEV_DB_RW
+  #RL_AVTR_EDW_DEV_DB_OWNER
+
+
+
+ #SCHEMA LEVEL ROLE 
+{% for sc in schemas %} 
+ - name: "RL_{{product}}_SCH_{{sc.name}}_RO"
+ - name: "RL_{{product}}_SCH_{{sc.name}}_RW"
+{% endfor %}
+
+
+privilegeGrants:
+
+#USAGE PRIVILEGES TO RL_RW/RL_RO
+{% for sc in schemas %}
+  # Grant USAGE privileges on database to RL_RO
+  - privilege: "USAGE"
+    objectType: "DATABASE"
+    objectName: "{{product}}"
+    roleName: "RL_{{product}}_SCH_{{sc.name}}_RO"
+    grantOption: false
+
+  # Grant USAGE privileges on schema to RL_RO
+  - privilege: "USAGE"
+    objectType: "SCHEMA"
+    objectName: "AVTR_DB_P_{{product}}.{{sc.name}}"
+    roleName: "RL_{{product}}_SCH_{{sc.name}}_RO"
+    grantOption: false
+
+  # Grant USAGE privileges on database to RL_RW
+  - privilege: "USAGE"
+    objectType: "DATABASE"
+    objectName: "{{product}}"
+    roleName: "RL_{{product}}_SCH_{{sc.name}}_RW"
+    grantOption: false
+
+  # Grant USAGE privileges on schema to RL_RW
+  - privilege: "USAGE"
+    objectType: "SCHEMA"
+    objectName: "AVTR_DB_P_{{product}}.{{sc.name}}"
+    roleName: "RL_{{product}}_SCH_{{sc.name}}_RW"
+    grantOption: false
+    
+{% endfor %}
+
+#GRANT PRIVILEGES TO SCHEMA ROLES
+{% for sc in schemas %}
+{% for pg in sc.privs_grants %}
+
+{% if pg.priv_type == 'READ_ONLY' %}
+{% for priv in pg.privileges %}
+#  # Grant  privileges on ALL & FUTURE  "priv_object_type" in database to RL_SCH_RO
+  - privilege: "{{priv.privlege}}"
+    objectType: "ALL {{pg.priv_object_type}}S IN SCHEMA"
+    objectName: "{{product}}.{{sc.name}}"
+    roleName: "RL_{{product}}_SCH_{{sc.name}}_RO"
+    grantOption: false
+    destroy: {{priv.deprovision}}
+{% endfor %}
+{% for priv in pg.future_privileges %}
+  - privilege: "{{priv.privlege}}"
+    objectType: "{{pg.priv_object_type}}S"
+    objectName: "SCHEMA {{product}}.{{sc.name}}"
+    roleName: "RL_{{product}}_SCH_{{sc.name}}_RO"
+    future: true
+    grantOption: false
+    destroy: {{priv.deprovision}}
+{% endfor %}
+{% endif %}
+
+{% if pg.priv_type == 'READ_WRITE' %}
+{% if pg.privileges is truthy %}
+{% for priv in pg.privileges %}
+#  # Grant  privileges on ALL & FUTURE  "priv_object_type" in database to RL_SCH_RO
+{% if priv.privlege == 'CREATE' %}
+  - privilege: "{{priv.privlege}} {{pg.priv_object_type}}"
+    objectType: "SCHEMA"
+    objectName: "{{product}}.{{sc.name}}"
+    roleName: "RL_{{product}}_SCH_{{sc.name}}_RW"
+    grantOption: false
+    destroy: {{priv.deprovision}}
+{% endif %}
+{% if priv.privlege != 'CREATE' %}
+
+  - privilege: "{{priv.privlege}}"
+    objectType: "ALL {{pg.priv_object_type}}S IN SCHEMA"
+    objectName: "{{product}}.{{sc.name}}"
+    roleName: "RL_{{product}}_SCH_{{sc.name}}_RW"
+    grantOption: false
+    destroy: {{priv.deprovision}}
+{% endif %}    
+{% endfor %}
+{% endif %}
+{% if pg.future_privileges is truthy %}
+{% for priv in pg.future_privileges %}
+  - privilege: "{{priv.privlege}}"
+    objectType: "{{pg.priv_object_type}}S"
+    objectName: "SCHEMA {{product}}.{{sc.name}}"
+    roleName: "RL_{{product}}_SCH_{{sc.name}}_RW"
+    future: true
+    grantOption: false
+    destroy: {{priv.deprovision}}
+{% endfor %}
+{% endif%}
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

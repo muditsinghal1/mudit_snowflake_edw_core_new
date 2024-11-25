@@ -1,0 +1,18 @@
+template:
+  path: function-project-role.yaml
+
+entries:
+
+#EXAMPLE
+  # - fr_role_name: AD_GRP_FR_PRJ_RL_AVTR_DEV_EDW_CORE_READER
+  #   create_role: false
+  #   deprovision: false
+  #   roles:
+  #     - name: AR_RL_AVTR_DEV_EDW_CORE
+  #       deprovision: false
+  #     - name: DR_RL_AVTR_P_DEV_EDW_CORE_RO
+  #       deprovision: false
+
+
+
+

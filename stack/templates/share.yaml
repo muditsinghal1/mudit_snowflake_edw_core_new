@@ -1,0 +1,97 @@
+shares:
+ - name: "{{env}}_SHARE_{{name}}"
+   destroy: {{deprovision}}
+   accounts:
+     {% if accounts is truthy%}
+   {% for ac in accounts %}
+   - {{ac.name}}
+   {% endfor %}
+   {% endif %}
+
+   readerAccounts:
+   {% if readerAccounts is truthy%}
+   {% for rac in readerAccounts %}
+   - {{rac.name}}
+   {% endfor %}
+   {% endif %}
+   properties: # (optional)
+    secure_objects_only: {{secureObjectOnly}}
+
+shareGrants:
+{% if access_on is truthy %}
+ {% for db in access_on %}
+ - shareName: "{{env}}_SHARE_{{name}}"
+   privilege: USAGE
+   objectType: DATABASE
+   objectName: "{{db.name}}"
+  {% for s in db.schemas %}
+ - shareName: "{{env}}_SHARE_{{name}}"
+   privilege: USAGE
+   objectType: SCHEMA
+   objectName: "{{db.name}}.{{s.name}}"
+  {% if s.tables is truthy %}
+  {% for t in s.tables %}
+ - shareName: "{{env}}_SHARE_{{name}}"
+   privilege: "{{t.grants_apply}}"
+   objectType: TABLE
+   objectName: "{{db.name}}.{{s.name}}.{{t.table_name}}"  
+  {% endfor %}
+  {% endif %}
+  {% if s.views is truthy %}
+  {% for v in s.views %}
+ - shareName: "{{env}}_SHARE_{{name}}"
+   privilege: "{{v.grants_apply}}"
+   objectType: VIEW
+   objectName: "{{db.name}}.{{s.name}}.{{v.view_name}}"  
+  {% endfor %}
+  {% endif %}      
+  {% if s.functions is truthy %}
+  {% for f in s.functions %}
+ - shareName: "{{env}}_SHARE_{{name}}"
+   privilege: "{{f.grants_apply}}"
+   objectType: VIEW
+   objectName: "{{db.name}}.{{s.name}}.{{f.function_name}}"  
+  {% endfor %}
+  {% endif %}    
+  
+#   {% if s.dynamictables is truthy %}
+#   {% for dt in s.dynamictables %}
+#  - shareName: "{{env}}_SHARE_{{name}}"
+#    privilege: "{{dt.grants_apply}}"
+#    objectType: VIEW
+#    objectName: "{{db.name}}.{{s.name}}.{{dt.table_name}}"  
+#   {% endfor %}
+#   {% endif %}    
+#   {% if s.externaltables is truthy %}
+#   {% for et in s.externaltables %}
+#  - shareName: "{{env}}_SHARE_{{name}}"
+#    privilege: "{{et.grants_apply}}"
+#    objectType: VIEW
+#    objectName: "{{db.name}}.{{s.name}}.{{et.extable_name}}"  
+#   {% endfor %}
+#   {% endif %}    
+#   {% if s.icebergtables is truthy %}
+#   {% for ict in s.icebergtables %}
+#  - shareName: "{{env}}_SHARE_{{name}}"
+#    privilege: "{{ict.grants_apply}}"
+#    objectType: VIEW
+#    objectName: "{{db.name}}.{{s.name}}.{{ict.ictable_name}}"  
+#   {% endfor %}
+#   {% endif %}    
+
+ {% if s.all_tables is truthy %}
+ - shareName: "{{env}}_SHARE_{{name}}"
+   privilege: "SELECT"
+   objectType: "ALL TABLES IN SCHEMA"
+   objectName: "{{db.name}}.{{s.name}}"  
+  {% endif %} 
+ {% if s.all_views is truthy %}
+ - shareName: "{{env}}_SHARE_{{name}}"
+   privilege: "SELECT"
+   objectType: "ALL VIEWS IN SCHEMA"
+   objectName: "{{db.name}}.{{s.name}}"  
+  {% endif %} 
+##Can be added  SIMILAR FOR ALL - FUNCTIONS, EXTERNAL TABLES,ICEBERG TABLES,DYNAMIC TABLES. Not required for Avantor
+  {% endfor %}
+  {% endfor %}
+  {% endif %}     

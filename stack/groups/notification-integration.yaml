@@ -1,0 +1,24 @@
+template:
+  path: notification-integration.yaml
+
+entries:
+  # - name: OP_MGMT_TASK_NOTIFICATION
+  #   integration_Type: queue # queue
+  #   notification_Provider: aws_sns # aws_sns
+  #   enabled: true
+  #   direction: OUTBOUND
+  #   aws_sns_topic_arn: 'arn:aws:sns:us-east-1:728901465415:AVTR-DCDET-Notification'
+  #   aws_sns_role_arn: 'arn:aws:iam::728901465415:role/AVTR-Dev-DCDET-Op-Mgmt-SNS-Role'
+  #   destroy: false
+
+#EXAMPLE
+  # - name: alert_email_integration
+  #   integration_Type: email
+  #   enabled: true
+  #   default_subject: 'Snowflake Alert: EDW Core Account'
+  #   comment: Notification integration used for email alerts
+  #   default_recipients:
+  #     - name: MUDIT.SINGHAL@AVANTORSCIENCES.COM
+  #     - name: SANDEEP.MANIVANNAN@AVANTORSCIENCES.COM
+
+

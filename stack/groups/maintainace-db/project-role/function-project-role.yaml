@@ -1,0 +1,24 @@
+template:
+  path: function-project-role.yaml
+
+entries:
+
+  - fr_role_name: AD_GRP_FR_PRJ_RL_AVTR_OP_MGMT_ENGINEER
+    create_role: true     #GET IT CREATED BY SCIM
+    deprovision: false
+    roles:
+      - name: AR_RL_AVTR_OP_MGMT
+        deprovision: false
+      - name: DR_RL_AVTR_OP_MGMT_RW
+        deprovision: false
+      - name: RL_AVTR_TASK_OPERATOR
+        deprovision: false
+
+  - fr_role_name: AD_GRP_FR_PRJ_RL_AVTR_OP_MGMT_READER
+    create_role: true  #GET IT CREATED BY SCIM
+    deprovision: false
+    roles:
+      - name: AR_RL_AVTR_OP_MGMT
+        deprovision: false
+      - name: DR_RL_AVTR_OP_MGMT_RO
+        deprovision: false
