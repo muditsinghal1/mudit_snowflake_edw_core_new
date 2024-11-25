@@ -1,0 +1,13 @@
+template:
+  path: shared-database.yaml
+
+entries:
+#  - sh_db_name: AVTR_DEV_EDW_CORE_SHARE
+#    create_share_db: true
+#    deprovision: false
+#    share_name: XEB40406.DEV_SHARE_EDW_CORE    #inbound_share_account_locator.share_name
+#    roles:
+#     - name: EXT_RL_AVTR_DEV_EDW_CORE_SHARE
+#       deprovision: false
+
+ 

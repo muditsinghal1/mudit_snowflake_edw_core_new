@@ -1,0 +1,24 @@
+template:
+  path: resource-monitor.yaml
+
+defaults:
+  frequency: MONTHLY
+  startTimestamp: "IMMEDIATELY"
+  triggers:
+    - threshold: 75
+      action: NOTIFY
+    - threshold: 90
+      action: SUSPEND
+    - threshold: 100
+      action: SUSPEND_IMMEDIATE
+
+entries:
+
+  - rmName: AVTR_OP_MGMT_RM
+    triggers:
+    - threshold: 75
+      action: NOTIFY
+    - threshold: 90
+      action: NOTIFY
+    - threshold: 100
+      action: NOTIFY

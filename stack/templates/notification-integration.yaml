@@ -1,0 +1,35 @@
+notificationIntegrations:
+{% if integration_Type is =='queue' %}
+  - name: {{name}}
+    integrationType: {{integration_Type}} # queue
+    notificationProvider: {{notification_Provider}} # aws_sns
+    properties:
+      enabled: {{enabled}}
+      direction: {{direction}}
+      aws_sns_topic_arn: '{{aws_sns_topic_arn}}'
+      aws_sns_role_arn: '{{aws_sns_role_arn}}'
+{% endif %}
+
+{% if integration_Type is == 'email' %}
+  - name: {{name}}
+    integrationType: {{integration_Type}} # queue
+    properties:
+      enabled: {{enabled}}
+      default_subject: 'Snowflake Alert: EDW Core Account'
+      comment: Notification integration used for email alerts
+      {% if default_recipients is truthy %}
+      {% for dr in default_recipients %}
+      default_recipients:
+        - {{dr.name}}
+      {% endfor%}
+      {% endif%}
+      {% if allowed_recipients is truthy %}
+      {% for ar in allowed_recipients %}
+      allowed_recipients:
+        - {{ar.name}}
+      {% endfor%}
+      {% endif%}      
+{% endif %}
+
+
+

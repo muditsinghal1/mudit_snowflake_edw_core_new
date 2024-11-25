@@ -1,0 +1,13 @@
+template:
+  path: op-mgmt-db.yaml
+
+entries:
+    - dbname: OP_MGMT
+      destroy: false
+      schemas:
+       - name: METADATA
+         deprovision: false
+       - name: CONTROL
+         deprovision: false       
+       - name: RAW
+         deprovision: false        

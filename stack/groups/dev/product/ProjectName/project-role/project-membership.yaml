@@ -1,0 +1,10 @@
+template:
+  path: project-membership.yaml
+
+entries:
+
+#EXAMPLE    
+  # - username: SVC_DEV_OP_TESTING
+  #   roles:
+  #     - name: AD_GRP_FR_PRJ_RL_AVTR_DEV_OP_TESTING_ENGINEER
+  #       deprovision:  false

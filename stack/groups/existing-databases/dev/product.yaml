@@ -1,0 +1,357 @@
+template:
+  path: existing_databases_product.yaml
+entries:
+
+    - product: AVTR_EDW_DEV
+      deprovision: false     #CAUTION : DO NOT SET TO TRUE WITHOUT APPROVAL FROM DATA PRODUCT OWNERS
+      schemas:
+       - name: TRANSFORM
+         deprovision: false
+         privs_grants:
+         - priv_type: READ_WRITE
+           priv_object_type: TABLE
+           privileges:
+            - privlege: CREATE
+              deprovision: false
+            - privlege: INSERT
+              deprovision: false
+            - privlege: DELETE
+              deprovision: false
+            - privlege: SELECT
+              deprovision: false
+            - privlege: TRUNCATE
+              deprovision: false
+            - privlege: UPDATE
+              deprovision: false            
+           future_privileges:
+            - privlege: INSERT
+              deprovision: false
+            - privlege: DELETE
+              deprovision: false
+            - privlege: SELECT
+              deprovision: false
+            - privlege: TRUNCATE
+              deprovision: false
+            - privlege: UPDATE
+              deprovision: false
+
+         - priv_type: READ_WRITE
+           priv_object_type: VIEW
+           privileges:
+            - privlege: CREATE
+              deprovision: false
+            - privlege: SELECT
+              deprovision: false            
+           future_privileges:
+            - privlege: SELECT
+              deprovision: false
+
+         - priv_type: READ_WRITE
+           priv_object_type: STAGE
+           privileges:
+            - privlege: READ
+              deprovision: false
+            - privlege: WRITE
+              deprovision: false
+            - privlege: USAGE
+              deprovision: false                          
+           future_privileges:
+            - privlege: READ
+              deprovision: false
+            - privlege: WRITE
+              deprovision: false  
+            - privlege: USAGE
+              deprovision: false
+
+         - priv_type: READ_WRITE
+           priv_object_type: PROCEDURE
+           privileges:
+            - privlege: CREATE
+              deprovision: false
+            - privlege: USAGE
+              deprovision: false              
+           future_privileges:
+            - privlege: USAGE
+              deprovision: false
+
+         - priv_type: READ_WRITE
+           priv_object_type: FUNCTION
+           privileges:
+            - privlege: CREATE
+              deprovision: false
+            - privlege: USAGE
+              deprovision: false  
+           future_privileges:
+            - privlege: USAGE
+              deprovision: false              
+
+         - priv_type: READ_WRITE
+           priv_object_type: SEQUENCE
+           privileges:
+            - privlege: USAGE
+              deprovision: false  
+           future_privileges:
+            - privlege: USAGE
+              deprovision: false
+ 
+         - priv_type: READ_WRITE
+           priv_object_type: FILE FORMAT
+           privileges:
+            - privlege: USAGE
+              deprovision: false  
+           future_privileges:
+            - privlege: USAGE
+              deprovision: false
+
+         - priv_type: READ_ONLY
+           priv_object_type: TABLE
+           privileges:
+            - privlege: SELECT
+              deprovision: false       
+           future_privileges:
+            - privlege: SELECT
+              deprovision: false
+
+         - priv_type: READ_ONLY
+           priv_object_type: VIEW
+           privileges:
+            - privlege: SELECT
+              deprovision: false            
+           future_privileges:
+            - privlege: SELECT
+              deprovision: false
+
+
+       - name: MODEL
+         deprovision: false
+         privs_grants:
+         - priv_type: READ_WRITE
+           priv_object_type: TABLE
+           privileges:
+            - privlege: CREATE
+              deprovision: false
+            - privlege: INSERT
+              deprovision: false
+            - privlege: DELETE
+              deprovision: false
+            - privlege: SELECT
+              deprovision: false
+            - privlege: TRUNCATE
+              deprovision: false
+            - privlege: UPDATE
+              deprovision: false            
+           future_privileges:
+            - privlege: INSERT
+              deprovision: false
+            - privlege: DELETE
+              deprovision: false
+            - privlege: SELECT
+              deprovision: false
+            - privlege: TRUNCATE
+              deprovision: false
+            - privlege: UPDATE
+              deprovision: false
+
+         - priv_type: READ_WRITE
+           priv_object_type: VIEW
+           privileges:
+            - privlege: CREATE
+              deprovision: false
+            - privlege: SELECT
+              deprovision: false            
+           future_privileges:
+            - privlege: SELECT
+              deprovision: false
+
+         - priv_type: READ_WRITE
+           priv_object_type: STAGE
+           privileges:
+            - privlege: READ
+              deprovision: false
+            - privlege: WRITE
+              deprovision: false
+            - privlege: USAGE
+              deprovision: false                          
+           future_privileges:
+            - privlege: READ
+              deprovision: false
+            - privlege: WRITE
+              deprovision: false  
+            - privlege: USAGE
+              deprovision: false
+
+         - priv_type: READ_WRITE
+           priv_object_type: PROCEDURE
+           privileges:
+            - privlege: CREATE
+              deprovision: false
+            - privlege: USAGE
+              deprovision: false              
+           future_privileges:
+            - privlege: USAGE
+              deprovision: false
+
+         - priv_type: READ_WRITE
+           priv_object_type: FUNCTION
+           privileges:
+            - privlege: CREATE
+              deprovision: false
+            - privlege: USAGE
+              deprovision: false  
+           future_privileges:
+            - privlege: USAGE
+              deprovision: false              
+
+         - priv_type: READ_WRITE
+           priv_object_type: SEQUENCE
+           privileges:
+            - privlege: USAGE
+              deprovision: false  
+           future_privileges:
+            - privlege: USAGE
+              deprovision: false
+ 
+         - priv_type: READ_WRITE
+           priv_object_type: FILE FORMAT
+           privileges:
+            - privlege: USAGE
+              deprovision: false  
+           future_privileges:
+            - privlege: USAGE
+              deprovision: false
+
+         - priv_type: READ_ONLY
+           priv_object_type: TABLE
+           privileges:
+            - privlege: SELECT
+              deprovision: false       
+           future_privileges:
+            - privlege: SELECT
+              deprovision: false
+
+         - priv_type: READ_ONLY
+           priv_object_type: VIEW
+           privileges:
+            - privlege: SELECT
+              deprovision: false            
+           future_privileges:
+            - privlege: SELECT
+              deprovision: false               
+
+       - name: PUBLISHED
+         deprovision: false
+         privs_grants:
+         - priv_type: READ_WRITE
+           priv_object_type: TABLE
+           privileges:
+            - privlege: CREATE
+              deprovision: false
+            - privlege: INSERT
+              deprovision: false
+            - privlege: DELETE
+              deprovision: false
+            - privlege: SELECT
+              deprovision: false
+            - privlege: TRUNCATE
+              deprovision: false
+            - privlege: UPDATE
+              deprovision: false            
+           future_privileges:
+            - privlege: INSERT
+              deprovision: false
+            - privlege: DELETE
+              deprovision: false
+            - privlege: SELECT
+              deprovision: false
+            - privlege: TRUNCATE
+              deprovision: false
+            - privlege: UPDATE
+              deprovision: false
+
+         - priv_type: READ_WRITE
+           priv_object_type: VIEW
+           privileges:
+            - privlege: CREATE
+              deprovision: false
+            - privlege: SELECT
+              deprovision: false            
+           future_privileges:
+            - privlege: SELECT
+              deprovision: false
+
+         - priv_type: READ_WRITE
+           priv_object_type: STAGE
+           privileges:
+            - privlege: READ
+              deprovision: false
+            - privlege: WRITE
+              deprovision: false
+            - privlege: USAGE
+              deprovision: false                          
+           future_privileges:
+            - privlege: READ
+              deprovision: false
+            - privlege: WRITE
+              deprovision: false  
+            - privlege: USAGE
+              deprovision: false
+
+         - priv_type: READ_WRITE
+           priv_object_type: PROCEDURE
+           privileges:
+            - privlege: CREATE
+              deprovision: false
+            - privlege: USAGE
+              deprovision: false              
+           future_privileges:
+            - privlege: USAGE
+              deprovision: false
+
+         - priv_type: READ_WRITE
+           priv_object_type: FUNCTION
+           privileges:
+            - privlege: CREATE
+              deprovision: false
+            - privlege: USAGE
+              deprovision: false  
+           future_privileges:
+            - privlege: USAGE
+              deprovision: false              
+
+         - priv_type: READ_WRITE
+           priv_object_type: SEQUENCE
+           privileges:
+            - privlege: USAGE
+              deprovision: false  
+           future_privileges:
+            - privlege: USAGE
+              deprovision: false
+ 
+         - priv_type: READ_WRITE
+           priv_object_type: FILE FORMAT
+           privileges:
+            - privlege: USAGE
+              deprovision: false  
+           future_privileges:
+            - privlege: USAGE
+              deprovision: false
+
+         - priv_type: READ_ONLY
+           priv_object_type: TABLE
+           privileges:
+            - privlege: SELECT
+              deprovision: false       
+           future_privileges:
+            - privlege: SELECT
+              deprovision: false
+
+         - priv_type: READ_ONLY
+           priv_object_type: VIEW
+           privileges:
+            - privlege: SELECT
+              deprovision: false            
+           future_privileges:
+            - privlege: SELECT
+              deprovision: false   
+
+

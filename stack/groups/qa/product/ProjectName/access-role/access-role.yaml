@@ -1,0 +1,13 @@
+template:
+  path: access-role.yaml
+
+entries:
+
+#EXAMPLE
+  # - ar_role_name: AR_RL_AVTR_DEV_EDW_CORE
+  #   deprovision: false  
+  #   objects:
+  #     - name: WH_EDW_CORE_DEV
+  #       type: warehouse
+  #       privilege: USAGE
+  #       deprovision: false

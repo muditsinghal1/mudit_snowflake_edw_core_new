@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# echo $TOOLKIT_CLI_DOWNLOAD_URL
+# curl --fail --output toolkit-cli.zip "$TOOLKIT_CLI_DOWNLOAD_URL"
+# unzip -jd install toolkit-cli.zip
+
+DEFAULT_VERSION=$(cat PROVISION_VERSION)
+PROVISION_VERSION=${VERSION:-$DEFAULT_VERSION}
+#
+echo "PROVISION AUTOMATION VERSION: $PROVISION_VERSION"
+echo "https://repo.phdata.io/$TOOLKIT_DOWNLOAD_URL_TOKEN/toolkit-cli/maven/io/phdata/toolkit/toolkit-cli/$PROVISION_VERSION/toolkit-cli-$PROVISION_VERSION.zip"
+path=https://repo.phdata.io/$TOOLKIT_DOWNLOAD_URL_TOKEN/toolkit-cli/maven/io/phdata/toolkit/toolkit-cli/$PROVISION_VERSION/toolkit-cli-$PROVISION_VERSION.zip
+echo "PROVISION AUTOMATION DOWNLOAD URL: $path"
+
+curl --fail --output toolkit-cli.zip "$path"
+unzip -jd install toolkit-cli.zip

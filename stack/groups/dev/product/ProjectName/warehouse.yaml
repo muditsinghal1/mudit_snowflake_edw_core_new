@@ -1,0 +1,18 @@
+template:
+  path: warehouse.yaml
+
+defaults:
+  scaling_policy: ECONOMY
+  auto_suspend: 600
+  auto_resume: true
+  creditQuota: 100
+  frequency: MONTHLY
+  startTimestamp: IMMEDIATELY
+  destroy:  false
+
+entries:
+        
+#EXAMPLE
+  # - name: EDW_CORE_DEV
+  #   destroy: false
+  #   resourceMonitor: AVTR_DEV_EDW_CORE_RM

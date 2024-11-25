@@ -1,0 +1,19 @@
+template:
+  path: warehouse.yaml
+
+defaults:
+  scaling_policy: ECONOMY
+  auto_suspend: 600
+  auto_resume: true
+  creditQuota: 100
+  frequency: MONTHLY
+  startTimestamp: IMMEDIATELY
+  max_cluster_count: 1
+  destroy:  false
+
+entries:
+
+  - name: OP_MGMT
+    destroy: false
+    size: XSMALL
+    resourceMonitor: AVTR_OP_MGMT_RM
